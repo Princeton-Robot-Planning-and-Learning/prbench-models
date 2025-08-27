@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "prbench_models"
 version = "0.1.0"
-description = "A basic starter for Python packages."
+description = "Models for PRBench baselines."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
