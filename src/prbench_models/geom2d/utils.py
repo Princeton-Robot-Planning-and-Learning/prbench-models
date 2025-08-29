@@ -1,5 +1,3 @@
-"""Utils for geom2d environments."""
-
 """Utilities for 2D geometry robot manipulation tasks."""
 
 import abc
@@ -91,20 +89,24 @@ class Geom2dRobotController(GroundParameterizedController, abc.ABC):
     def reset(
         self, x: ObjectCentricState, params: Union[tuple[float, ...], float]
     ) -> None:
+        """Reset the controller with new state and parameters."""
         self._current_params = params
         self._current_plan = None
         self._current_state = x
 
     def terminated(self) -> bool:
+        """Check if the controller has finished executing its plan."""
         return self._current_plan is not None and len(self._current_plan) == 0
 
     def step(self) -> NDArray[np.float32]:
+        """Execute the next action in the controller's plan."""
         assert self._current_state is not None
         if self._current_plan is None:
             self._current_plan = self._generate_plan(self._current_state)
         return self._current_plan.pop(0)
 
     def observe(self, x: ObjectCentricState) -> None:
+        """Update the controller with a new observed state."""
         self._current_state = x
 
     def _generate_plan(self, x: ObjectCentricState) -> list[NDArray[np.float32]]:
