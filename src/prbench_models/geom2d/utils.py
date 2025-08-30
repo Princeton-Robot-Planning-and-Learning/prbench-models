@@ -1,7 +1,7 @@
 """Utilities for 2D geometry robot manipulation tasks."""
 
 import abc
-from typing import Sequence, Union
+from typing import Optional, Sequence, Union
 
 import numpy as np
 from bilevel_planning.structs import GroundParameterizedController
@@ -19,6 +19,7 @@ class Geom2dRobotController(GroundParameterizedController, abc.ABC):
         self,
         objects: Sequence[Object],
         action_space: CRVRobotActionSpace,
+        init_constant_state: Optional[ObjectCentricState] = None,
         safe_y: float = 0.8,
     ) -> None:
         self._robot = objects[0]
@@ -28,6 +29,7 @@ class Geom2dRobotController(GroundParameterizedController, abc.ABC):
         self._current_plan: Union[list[NDArray[np.float32]], None] = None
         self._current_state: Union[ObjectCentricState, None] = None
         self._safe_y = safe_y
+        self._init_constant_state = init_constant_state
         # Extract max deltas from action space bounds
         self._max_delta_x = action_space.high[0]
         self._max_delta_y = action_space.high[1]
