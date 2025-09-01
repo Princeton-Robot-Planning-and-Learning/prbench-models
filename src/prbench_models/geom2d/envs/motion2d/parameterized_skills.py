@@ -1,4 +1,4 @@
-"""Parameterized skills for the motion2D environment."""
+"""Parameterized skills for the Motion2D environment."""
 
 from typing import Optional, Sequence, cast
 

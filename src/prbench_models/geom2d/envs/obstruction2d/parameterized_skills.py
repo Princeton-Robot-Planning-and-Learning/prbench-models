@@ -1,4 +1,4 @@
-"""Parameterized skills for the obstruction2D environment."""
+"""Parameterized skills for the Obstruction2D environment."""
 
 from typing import Sequence
 
