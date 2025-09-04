@@ -13,7 +13,6 @@ from typing import Optional, Sequence
 
 import numpy as np
 from numpy.typing import NDArray
-from prbench.envs.tidybot.ik_solver import TidybotIKSolver
 from prbench.envs.tidybot.motion3d import Motion3DEnvSpec
 from ruckig import (  # pylint: disable=no-name-in-module
     InputParameter,
@@ -21,6 +20,8 @@ from ruckig import (  # pylint: disable=no-name-in-module
     Result,
     Ruckig,
 )
+
+from prbench_models.tidybot.ik_solver import TidybotIKSolver
 
 
 class ArmController:

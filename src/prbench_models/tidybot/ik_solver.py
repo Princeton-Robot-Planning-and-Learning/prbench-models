@@ -16,10 +16,11 @@ Other References:
   blob/main/dm_control/utils/inverse_kinematics.py
 """
 
-import os
+from pathlib import Path
 
 import mujoco
 import numpy as np
+import prbench
 
 
 class TidybotIKSolver:
@@ -37,11 +38,16 @@ class TidybotIKSolver:
         max_angle_change: float = np.deg2rad(45),
     ) -> None:
         # Load arm without gripper
-        model_path = os.path.join(
-            os.path.dirname(__file__), "models", "kinova_gen3", "gen3.xml"
+        model_path = (
+            Path(prbench.__file__).parent
+            / "envs"
+            / "tidybot"
+            / "models"
+            / "kinova_gen3"
+            / "gen3.xml"
         )
         self.model = mujoco.MjModel.from_xml_path(  # pylint: disable=no-member
-            model_path
+            str(model_path)
         )
         self.data = mujoco.MjData(self.model)  # pylint: disable=no-member
         self.model.body_gravcomp[:] = 1.0

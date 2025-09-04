@@ -1,7 +1,8 @@
 """Tests for the TidyBot3D inverse kinematics solver (IKSolver)."""
 
 import numpy as np
-from prbench.envs.tidybot.ik_solver import TidybotIKSolver
+
+from prbench_models.tidybot.ik_solver import TidybotIKSolver
 
 
 def test_ik_solver_basic():

@@ -9,7 +9,8 @@ are installed.
 
 import numpy as np
 import pytest
-from prbench.envs.tidybot.base_controller import BaseController
+
+from prbench_models.tidybot.base_controller import BaseController
 
 
 @pytest.fixture
