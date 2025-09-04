@@ -57,6 +57,18 @@ exclude = ["venv/*", ".venv/*", "third-party/*"]
 [[tool.mypy.overrides]]
 module = [
     "matplotlib.*",
+    "pygame.*",
+    "dill.*",
+    "mujoco.*",
+    "pin.*",
+    "ruckig.*",
+    "flask.*",
+    "flask_socketio.*",
+    "zmq.*",
+    "redis.*",
+    "phoenix6.*",
+    "cv2.*",
+    "pybullet.*",
 ]
 ignore_missing_imports = true
 
