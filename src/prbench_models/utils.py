@@ -50,11 +50,9 @@ class MultiEnvWrapper(VectorEnv):
         self.envs = [env_fn() for _ in range(num_envs)]
 
         # Initialize VectorEnv attributes
-        super().__init__(
-            num_envs=num_envs,
-            observation_space=batch_space(self.envs[0].observation_space, num_envs),
-            action_space=batch_space(self.envs[0].action_space, num_envs),
-        )  # type: ignore
+        self.num_envs = num_envs
+        self.observation_space = batch_space(self.envs[0].observation_space, num_envs)
+        self.action_space = batch_space(self.envs[0].action_space, num_envs)
 
         # Store single environment spaces for reference
         self.single_observation_space = self.envs[0].observation_space
