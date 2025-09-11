@@ -12,7 +12,8 @@ dependencies = [
    "matplotlib",
    "numpy",
    "relational_structs@git+https://github.com/tomsilver/relational-structs",
-   "bilevel_planning@git+https://github.com/tomsilver/bilevel-planning"
+   "bilevel_planning@git+https://github.com/tomsilver/bilevel-planning",
+   "prpl_utils@git+https://github.com/Princeton-Robot-Planning-and-Learning/prpl-utils"
 ]
 
 [project.optional-dependencies]

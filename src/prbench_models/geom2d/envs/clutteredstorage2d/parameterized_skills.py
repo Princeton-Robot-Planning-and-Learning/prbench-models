@@ -14,7 +14,7 @@ from prbench.envs.geom2d.utils import (
     get_tool_tip_position,
     run_motion_planning_for_crv_robot,
     snap_suctioned_objects,
-    state_has_collision,
+    state_2d_has_collision,
 )
 from relational_structs import (
     Object,
@@ -361,7 +361,9 @@ class GroundPlaceBlockNotOnShelfController(Geom2dRobotController):
             # Check collision
             moving_objects = {self._robot} | {o for o, _ in suctioned_objects}
             static_objects = set(full_state) - moving_objects
-            if not state_has_collision(full_state, moving_objects, static_objects, {}):
+            if not state_2d_has_collision(
+                full_state, moving_objects, static_objects, {}
+            ):
                 break
         rel_x = (abs_x - self.world_x_min) / (self.world_x_max - self.world_x_min)
         rel_y = (abs_y - self.world_y_min) / (self.world_y_max - self.world_y_min)
