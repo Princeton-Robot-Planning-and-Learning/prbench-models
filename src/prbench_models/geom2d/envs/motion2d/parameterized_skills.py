@@ -10,7 +10,7 @@ from prbench.envs.geom2d.structs import SE2Pose
 from prbench.envs.geom2d.utils import (
     CRVRobotActionSpace,
     run_motion_planning_for_crv_robot,
-    state_has_collision,
+    state_2d_has_collision,
 )
 from relational_structs import (
     Object,
@@ -61,7 +61,9 @@ class GroundMoveToTgtController(Geom2dRobotController):
             # Check collision
             moving_objects = {self._robot}
             static_objects = set(full_state) - moving_objects
-            if not state_has_collision(full_state, moving_objects, static_objects, {}):
+            if not state_2d_has_collision(
+                full_state, moving_objects, static_objects, {}
+            ):
                 break
         # Relative orientation
         rel_theta = (abs_theta + np.pi) / (2 * np.pi)
@@ -159,7 +161,9 @@ class GroundMoveToPassageController(GroundMoveToTgtController):
             # Check collision
             moving_objects = {self._robot}
             static_objects = set(full_state) - moving_objects
-            if not state_has_collision(full_state, moving_objects, static_objects, {}):
+            if not state_2d_has_collision(
+                full_state, moving_objects, static_objects, {}
+            ):
                 break
         rel_theta = (abs_theta + np.pi) / (2 * np.pi)
         return (rel_x, rel_y, rel_theta)
