@@ -6,7 +6,7 @@ import numpy as np
 from bilevel_planning.trajectory_samplers.trajectory_sampler import (
     TrajectorySamplingFailure,
 )
-from prbench.envs.geom2d.clutteredretrieval2d import ClutteredRetrieval2DEnvSpec
+from prbench.envs.geom2d.clutteredretrieval2d import ClutteredRetrieval2DEnvConfig
 from prbench.envs.geom2d.structs import SE2Pose
 from prbench.envs.geom2d.utils import (
     CRVRobotActionSpace,
@@ -177,11 +177,11 @@ class GroundPlaceController(Geom2dRobotController):
         super().__init__(objects, action_space, init_constant_state)
         self._block = objects[1]
         self._action_space = action_space
-        env_spec = ClutteredRetrieval2DEnvSpec()
-        self.world_x_min = env_spec.world_min_x + env_spec.robot_base_radius
-        self.world_x_max = env_spec.world_max_x - env_spec.robot_base_radius
-        self.world_y_min = env_spec.world_min_y + env_spec.robot_base_radius
-        self.world_y_max = env_spec.world_max_y - env_spec.robot_base_radius
+        env_config = ClutteredRetrieval2DEnvConfig()
+        self.world_x_min = env_config.world_min_x + env_config.robot_base_radius
+        self.world_x_max = env_config.world_max_x - env_config.robot_base_radius
+        self.world_y_min = env_config.world_min_y + env_config.robot_base_radius
+        self.world_y_max = env_config.world_max_y - env_config.robot_base_radius
 
     def sample_parameters(
         self, x: ObjectCentricState, rng: np.random.Generator
