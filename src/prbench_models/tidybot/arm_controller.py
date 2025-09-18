@@ -43,7 +43,7 @@ class ArmController:
         otg_inp: Ruckig input parameters buffer.
         otg_out: Ruckig output parameters buffer.
         otg_res: Latest Ruckig result status (e.g., Working/Finished).
-        motion3d_spec: Environment timing/specs (e.g., ``policy_control_period``).
+        motion3d_config: Environment timing/specs (e.g., ``policy_control_period``).
         command_timeout_factor: Multiplier applied to ``policy_control_period`` to
             determine command timeout.
         gripper_scale: Scales normalized gripper command to actuator units.
@@ -83,7 +83,7 @@ class ArmController:
         self.otg_inp.max_velocity = [math.radians(v) for v in max_velocity_deg]
         self.otg_inp.max_acceleration = [math.radians(a) for a in max_acceleration_deg]
         self.otg_res = None
-        self.motion3d_spec = Motion3DEnvSpec()
+        self.motion3d_config = Motion3DEnvSpec()
         self.command_timeout_factor = command_timeout_factor
         self.gripper_scale = gripper_scale
         self.retract_qpos = (

@@ -6,7 +6,7 @@ import numpy as np
 from bilevel_planning.trajectory_samplers.trajectory_sampler import (
     TrajectorySamplingFailure,
 )
-from prbench.envs.geom2d.clutteredstorage2d import ClutteredStorage2DEnvSpec
+from prbench.envs.geom2d.clutteredstorage2d import ClutteredStorage2DEnvConfig
 from prbench.envs.geom2d.structs import SE2Pose
 from prbench.envs.geom2d.utils import (
     CRVRobotActionSpace,
@@ -328,12 +328,14 @@ class GroundPlaceBlockNotOnShelfController(Geom2dRobotController):
         self._block = objects[1]
         self._shelf = objects[2]
         self._action_space = action_space
-        env_spec = ClutteredStorage2DEnvSpec()
-        self.world_x_min = env_spec.world_min_x + env_spec.robot_base_radius
-        self.world_x_max = env_spec.world_max_x - env_spec.robot_base_radius
-        self.world_y_min = env_spec.world_min_y + env_spec.robot_base_radius
+        env_config = ClutteredStorage2DEnvConfig()
+        self.world_x_min = env_config.world_min_x + env_config.robot_base_radius
+        self.world_x_max = env_config.world_max_x - env_config.robot_base_radius
+        self.world_y_min = env_config.world_min_y + env_config.robot_base_radius
         self.world_y_max = (
-            env_spec.world_max_y - env_spec.shelf_height - env_spec.robot_base_radius
+            env_config.world_max_y
+            - env_config.shelf_height
+            - env_config.robot_base_radius
         )
 
     def _get_vacuum_actions(self) -> tuple[float, float]:

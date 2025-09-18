@@ -33,7 +33,7 @@ jobs:
     - name: Install the project
       run: |
         uv sync --all-extras --dev
-        uv pip install third-party/prbench
+        uv pip install third-party/prbench[all]
     - name: Lint
       run: |
         uv run pytest . --pylint -m pylint --pylint-rcfile=.pylintrc
@@ -56,7 +56,7 @@ jobs:
     - name: Install the project
       run: |
         uv sync --all-extras --dev
-        uv pip install third-party/prbench
+        uv pip install third-party/prbench[all]
     - name: Mypy
       run: |
         uv run mypy .
@@ -83,7 +83,7 @@ jobs:
     - name: Install the project
       run: |
         uv sync --all-extras --dev
-        uv pip install third-party/prbench
+        uv pip install third-party/prbench[all]
     - name: Pytest
       run: |
        uv run pytest tests/

@@ -37,7 +37,7 @@ class BaseController:
             motion limits such as ``max_velocity`` and ``max_acceleration``).
         otg_out: Ruckig output parameters buffer (provides new positions for control).
         otg_res: Latest Ruckig result status (e.g., Working/Finished).
-        motion3d_spec: Environment timing/specs (e.g., ``policy_control_period``).
+        motion3d_config: Environment timing/specs (e.g., ``policy_control_period``).
         command_timeout_factor: Multiplier applied to ``policy_control_period`` for
             detecting command timeouts.
         reset_qpos: Default pose used by ``reset()`` when initializing the base.
@@ -67,7 +67,7 @@ class BaseController:
         self.otg_inp.max_velocity = list(max_velocity)
         self.otg_inp.max_acceleration = list(max_acceleration)
         self.otg_res = None
-        self.motion3d_spec = Motion3DEnvSpec()
+        self.motion3d_config = Motion3DEnvSpec()
 
     def reset(self) -> None:
         """Reset the base controller to origin position."""
